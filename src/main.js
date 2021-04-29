@@ -116,7 +116,7 @@ Vue.prototype.$webEvent = (rt, ev = "event") => {
 
 // socket io
 Vue.prototype.$socket = require("socket.io-client")(
-    process.env.NODE_ENV == 'production' ? '' : 'ws://frontend:83',
+    process.env.NODE_ENV == 'production' ? '' : 'ws://192.168.6.2:83',
     {
       transports: ["websocket"]
     },
@@ -137,9 +137,10 @@ Vue.prototype.$openLink = (link) => {
 
 // 内部跳转
 Vue.prototype.$toRouter = (rt) => {
-  if (router.currentRoute.name != rt.name) {
-    router.push(rt)
-  }
+  router.push(rt)
+  // if (router.currentRoute.name != rt.name) {
+  //   router.push(rt)
+  // }
 }
 
 // 新人进入时
