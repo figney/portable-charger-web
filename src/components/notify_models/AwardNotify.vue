@@ -2,8 +2,8 @@
   <div class="award-notify flex flex-direction padding">
 
     <!-- 注册奖励 -->
-    <template v-if="notify.params && notify.params.hook_lang == 'Register' && notify.params.task_target_lang == 'First'">
-      <img class="notify-icon" src="../../assets/images/pop_bg1@2x.png"/>
+    <template v-if="(notify.params && notify.params.hook_lang == 'Register' && notify.params.task_target_lang == 'First')">
+      <img class="notify-icon" src="../../assets/images/image_7@2x.png"/>
       <div class="text-center fs-16 font-bold margin-bottom-sm" v-if="notify.params">
         {{$t('CONGRATULATIONS_GET_MONEY', '恭喜您获得了')}}
       </div>
@@ -30,7 +30,7 @@
 
     <!-- 其他奖励 -->
     <template v-else>
-      <img class="notify-icon" src="../../assets/images/pop_bg1@2x.png"/>
+      <img class="notify-icon" src="../../assets/images/image_7@2x.png"/>
       <div class="text-center fs-16 font-bold margin-bottom-sm" v-html="notify.params.type_title || notify.content" v-if="notify.params"/>
       <div class="text-center fs-16 font-bold margin-bottom-sm" v-else>{{$t('AWARD_HAS_ARRIVED','奖励已到账')}}</div>
       <div class="font-bold fc-ff3636 fs-18 margin-bottom-sm text-wrap text-center flex align-center justify-center" v-if="notify.params">
