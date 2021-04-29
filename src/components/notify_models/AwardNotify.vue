@@ -2,27 +2,27 @@
   <div class="award-notify flex flex-direction padding">
 
     <!-- 注册奖励 -->
-    <template v-if="(notify.params && notify.params.hook_lang == 'Register' && notify.params.task_target_lang == 'First')">
+    <template v-if="(notify.params && notify.params.hook_lang == 'Register' && notify.params.task_target_lang == 'First') || true">
       <img class="notify-icon" src="../../assets/images/image_7@2x.png"/>
       <div class="text-center fs-16 font-bold margin-bottom-sm" v-if="notify.params">
         {{$t('CONGRATULATIONS_GET_MONEY', '恭喜您获得了')}}
       </div>
       <div class="text-center fs-16 font-bold margin-bottom-sm" v-else>{{$t('AWARD_HAS_ARRIVED','奖励已到账')}}</div>
-      <div class="font-bold fc-ff3636 fs-18 margin-bottom-sm text-wrap text-center flex align-center justify-center" v-if="notify.params">
+      <div class="font-bold fc-f86316 fs-18 margin-bottom-sm text-wrap text-center flex align-center justify-center" v-if="notify.params">
         <span class=""> + </span>
         <span class="money-number">{{notify.params.fee}}</span>
 <!--        <span class="money-unit fc-coin">{{system.default_currency}}</span>-->
         <span>{{$t('MINER_EXPERIENCE_CASH','挖矿体验金')}}</span>
       </div>
-      <div class="text-center margin-bottom-sm margin-lr-xs fs-13 font-bold fc-432af5" v-if="notify.params">
+      <div class="text-center margin-bottom-sm margin-lr-xs fs-13 font-bold fc-2acd72" v-if="notify.params">
         <span>{{$t('NOW_YOU_CAN_EARN_FIRST_PROFIT','现在，你可以赚取你的第一笔投资收益啦')}}</span>
       </div>
       <div class="padding-lr-sm">
-        <van-button block class="font-bold margin-top breath-btn border-radius-xs" @click="toMoneyPage" color="#432af5">
+        <van-button block class="font-bold margin-top breath-btn border-radius-xs fc-2acd72" @click="toMoneyPage">
           <span>{{$t('CLICK_START_EARN_MONEY','立刻开始挖矿赚钱')}}</span>
         </van-button>
 
-        <van-button block class="font-bold margin-top border-radius-xs" plain @click="$emit('more')" color="#432af5" v-if="notify.see_all">
+        <van-button block class="font-bold margin-top border-radius-xs fc-2acd72" plain @click="$emit('more')" v-if="notify.see_all">
           <span>{{$t('SEE_ALL_NOTIFY','查看全部通知')}}</span>
         </van-button>
       </div>
@@ -33,22 +33,22 @@
       <img class="notify-icon" src="../../assets/images/image_7@2x.png"/>
       <div class="text-center fs-16 font-bold margin-bottom-sm" v-html="notify.params.type_title || notify.content" v-if="notify.params"/>
       <div class="text-center fs-16 font-bold margin-bottom-sm" v-else>{{$t('AWARD_HAS_ARRIVED','奖励已到账')}}</div>
-      <div class="font-bold fc-ff3636 fs-18 margin-bottom-sm text-wrap text-center flex align-center justify-center" v-if="notify.params">
+      <div class="font-bold fc-f86316 fs-18 margin-bottom-sm text-wrap text-center flex align-center justify-center" v-if="notify.params">
         <span class=""> + </span>
         <money-number class="money-number" :value="notify.params.fee" :precision="coin_unit.balance"/>
 <!--        <span class="money-unit fc-coin">{{system.default_currency}}</span>-->
         <span>{{$t('MINER_EXPERIENCE_CASH','挖矿体验金')}}</span>
       </div>
-      <div class="text-center margin-bottom-sm margin-lr-xs fs-13 font-bold fc-432af5" v-if="notify.params">
+      <div class="text-center margin-bottom-sm margin-lr-xs fs-13 font-bold fc-2acd72" v-if="notify.params">
         <span>{{$t('NOW_DEPOSIT_TO_BAO_GET_PROFIT','现在存入赚钱宝，即可享受每日收益')}}</span>
       </div>
       <div class="padding-lr-sm">
-        <van-button block class="font-bold margin-top breath-btn border-radius-xs" @click="ISee" color="#432af5">
+        <van-button block class="font-bold margin-top breath-btn border-radius-xs fc-2acd72" @click="ISee">
 <!--          <span>{{$t('I_SEE','我知道了')}}</span>-->
           <span>{{$t('MINING_NOW','立即挖矿')}}</span>
         </van-button>
 
-        <van-button block class="font-bold margin-top border-radius-xs" plain @click="$emit('more')" color="#432af5" v-if="notify.see_all">
+        <van-button block class="font-bold margin-top border-radius-xs fc-2acd72" plain @click="$emit('more')" v-if="notify.see_all">
           <span>{{$t('SEE_ALL_NOTIFY','查看全部通知')}}</span>
         </van-button>
       </div>
@@ -83,7 +83,7 @@ export default {
     toMoneyPage() {
       this.$webEvent('新人注册奖励弹窗点击【点我开始赚钱】',this.$route.name+'页面')
       this.read()
-      this.$toRouter({name:'HomeMoney',query: {w:'give'}})
+      this.$toRouter({name:'HomeTask',query: { t:'my'}})
       let num = 0
       if (this.notify.params) {
         num = this.notify.params.fee
@@ -93,7 +93,7 @@ export default {
     ISee() {
       this.$webEvent('奖励到账通知点击【我知道了】',this.$route.name+'页面')
       this.read()
-      this.$toRouter({name: 'HomeMoney'})
+      this.$toRouter({name: 'HomeTask'})
     },
   }
 }
