@@ -151,7 +151,7 @@ export default {
     return {
       activeTab: 0,
       currentLang: localStorage.getItem("language") || "EN",
-      show_income: true,
+      show_income: false,
       loadingHome: true,
       lists:[],
 
