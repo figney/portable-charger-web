@@ -190,7 +190,7 @@ export default {
       bottom: 2.2rem;
       left: 5vw;
       width: 90vw;
-      top: 12rem;
+      top: 12.75rem;
       padding: 1.3vw 2.2vw;
       display: flex;
       flex-direction: column;
