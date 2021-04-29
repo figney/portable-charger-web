@@ -19,7 +19,7 @@
     <div>
       <div class="">
         <van-tabs v-model="active">
-          <van-tab color="#2ACD72" title="租赁赚钱" >
+          <van-tab color="#2ACD72" title="租赁赚钱" name="all" >
             <div class="zlzq">
 
               <div class="flex flex-direction justify-around white-view vw-90 border-radius-sm margin-top-xs margin-auto">
@@ -105,7 +105,7 @@
 
             </div>
           </van-tab>
-          <van-tab color="#2ACD72" title="我的充电宝" >
+          <van-tab color="#2ACD72" title="我的充电宝" name="my" >
             <div class="wdcdb"> 
               <div class="flex flex-direction justify-around white-view vw-90 border-radius-sm margin-top-xs margin-auto">
                 <div class="flex justify-between margin-lr margin-tb-xs flex">
@@ -198,14 +198,14 @@ export default {
   },
   data: () => {
     return {
-
-
+      active: 'all', // all my
     };
   },
   mixins: [Base],
+  
   mounted() {
-    
-
+    console.log(this.$route.query.t);
+    this.active=this.$route.query.t || 'all';  
   },
   beforeDestroy() {
     

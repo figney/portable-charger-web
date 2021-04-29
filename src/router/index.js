@@ -27,7 +27,7 @@ const routes = [
   {
     path: "/task",
     name: "HomeTask",
-    // meta: { no_cache: true },
+    meta: { no_cache: true },
     component: () => import("@/views/home/Task"),
   },
   {
